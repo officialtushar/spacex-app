@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="left-container filter">
+
+    <ul class="year">
+      <li *ngFor="let button of buttons.year; let index=index">
+        <button id="year-{{index}}" class="year-buttons" (click)="filterData('year', {value: button}, $event)">
+          {{button}}
+        </button>
+      </li>
+    </ul>
+
+    <h3>Launch</h3>
+    <ul class="launch-success">
+      <li *ngFor="let button of buttons.launch; let index = index;">
+        <button  id="launch-{{index}}" class="launch-buttons"   (click)="filterData('launch', {value: button}, $event)">
+          {{button}}
+        </button>
+      </li>
+    </ul>
+
+    <h3>Landing</h3>
+    <ul class="launch-landing">
+      <li *ngFor="let button of buttons.landing; let index = index">
+        <button  id="land-{{index}}" class="land-buttons"  (click)="filterData('land', {value: button}, $event)">
+          {{button}}
+        </button>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="right-container program-data">
+    <ng-container *ngFor="let program of spacexPrograms">
+      <div class="card">
+        <h3>{{program.mission_name}}</h3>
+        <h3>Mission Ids:</h3>
+        <ul>
+          <ng-container *ngIf="program.mission_id.length > 0; else noMissionIds">
+            <li *ngFor="let id of program.mission_id">{{id}}</li>
+          </ng-container>
+          <ng-template #noMissionIds>
+            <span>No missions ids</span>
+          </ng-template>
+        </ul>
+        <strong>Launch Year: {{program.launch_year}} </strong>
+        <strong>Successfull Launch: {{program.launch_success}}</strong>
+        <strong>Successfull Landing: {{program.rocket.first_stage.cores[0].land_success}} </strong>
+      </div>
+    </ng-container>
+  </div>
+</div>
