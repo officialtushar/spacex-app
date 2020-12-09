@@ -12,7 +12,7 @@ export class DataService {
 
 
   getAllPrograms() {
-    return this.http.get('https://api.spaceXdata.com/v3/launches?limit=8')
+    return this.http.get('https://api.spaceXdata.com/v3/launches?limit=20')
     .pipe(
       map((response) => {
         console.log("%c getting the response of all launch programs","color: yellow", response);
@@ -23,7 +23,7 @@ export class DataService {
 
 
   launchSuccess(value) {
-    return this.http.get(`https://api.spaceXdata.com/v3/launches?limit=8&launch_success=${value}`)
+    return this.http.get(`https://api.spaceXdata.com/v3/launches?limit=20&launch_success=${value}`)
     .pipe(
       map((response) => {
         console.log("%c getting the response of launch success","color: yellow", response);
@@ -33,7 +33,7 @@ export class DataService {
   }
 
   launchAndLand(launch,land) {
-    return this.http.get(`https://api.spaceXdata.com/v3/launches?limit=8&launch_success=${launch}&land_success=${land}`)
+    return this.http.get(`https://api.spaceXdata.com/v3/launches?limit=20&launch_success=${launch}&land_success=${land}`)
     .pipe(
       map((response) => {
         console.log("%c getting the response of launch and land","color: yellow", response);
@@ -43,7 +43,7 @@ export class DataService {
   }
 
   allFilter(launch,land,year) {
-    return this.http.get(`https://api.spaceXdata.com/v3/launches?limit=100&launch_success=${launch}&land_success=${land}&launch_year=${year}`)
+    return this.http.get(`https://api.spaceXdata.com/v3/launches?limit=20&launch_success=${launch}&land_success=${land}&launch_year=${year}`)
     .pipe(
       map((response) => {
         console.log("%c getting the response of all filter","color: yellow", response);

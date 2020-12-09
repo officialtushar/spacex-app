@@ -53,13 +53,13 @@
     <div class="launch-landing grid-inside-filter">
       <div *ngFor="let button of buttons.landing; let index = index">
         <button id="land-{{index}}" class="land-buttons buttons" (click)="filterData('land', {value: button}, $event)">
-          {{button}}
+          {{button | titlecase}}
         </button>
       </div>
     </div>
   </div>
 
-  <div class="spacex-programs grid-data">
+  <div class="spacex-programs grid-data" *ngIf="spacexPrograms.length > 0; else noData">
     <ng-container *ngFor="let program of spacexPrograms; let index = index;">
       <div class="card">
         <div class="image">
@@ -105,5 +105,12 @@
       </div>
     </ng-container>
   </div>
+  <ng-template #noData>
+    <div class="no-data card">
+      <h3>No SpaceX Programs</h3>
+    </div>
+
+
+  </ng-template>
 
 </section>

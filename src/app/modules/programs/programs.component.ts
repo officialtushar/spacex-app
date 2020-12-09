@@ -1,6 +1,8 @@
 import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
-import { ThrowStmt } from '@angular/compiler';
+import * as $ from 'jquery';
+import { resetFakeAsyncZone } from '@angular/core/testing';
+
 // import $ from 'jquery';
 @Component({
   selector: 'app-programs',
@@ -8,7 +10,7 @@ import { ThrowStmt } from '@angular/compiler';
   styleUrls: ['./programs.component.scss']
 })
 export class ProgramsComponent implements OnInit {
-  spacexPrograms: Object;
+  spacexPrograms :any;
 
   constructor(
     private dataService: DataService
@@ -17,7 +19,12 @@ export class ProgramsComponent implements OnInit {
   filter = {
     launch: null,
     land: null,
-    year: null
+    year: null,
+    styles: {
+      launch: null,
+      land: null,
+      year: null
+    }
   }
 
   buttons = {
@@ -39,15 +46,28 @@ export class ProgramsComponent implements OnInit {
   }
 
 
-
-
   filterData(type, data, event) {
     console.log('event', event.target.id);
-    this.filter[type] = data.value;
 
+
+    if(this.filter.styles[type] !== null) {
+      $(`#${this.filter.styles[type]}`).removeClass('click-button');
+      $(`#${event.target.id}`).addClass('click-button');
+    } else {
+      $(`#${event.target.id}`).addClass('click-button');
+
+    }
+
+
+    this.filter[type] = data.value;
+    this.filter.styles[type] = event.target.id;
     console.log('fitler', this.filter);
 
+
     if(this.filter.launch !== null ) {
+
+
+
       if(this.filter.land !== null) {
         if(this.filter.year !== null) {
           this.allFilter();

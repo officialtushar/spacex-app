@@ -83,6 +83,7 @@ h5 {
   color: #000;
   margin-top: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 h1,
@@ -103,6 +104,13 @@ h5 {
   border: 1px solid red;
   margin-bottom: 10px;
 }
+
+
+
+.click-button {
+  background-color: var(--button-background-color);
+}
+
 
 .image {
   text-align: center;
