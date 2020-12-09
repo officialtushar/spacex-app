@@ -1,51 +1,109 @@
-<div class="container">
-  <div class="left-container filter">
+<nav class="site-nav grid">
+  <h1 class="app-title">SpaceX Launch Programs</h1>
+</nav>
 
-    <ul class="year">
-      <li *ngFor="let button of buttons.year; let index=index">
-        <button id="year-{{index}}" class="year-buttons" (click)="filterData('year', {value: button}, $event)">
+<section id="welcome" class="grid">
+
+  <div class="filters card">
+    <h3>Filters</h3>
+    <header>
+      <span class="title">
+        Launch Year
+      </span>
+      <hr class="bar">
+    </header>
+
+
+    <div class="year grid-inside-filter">
+
+      <div *ngFor="let button of buttons.year; let index=index">
+        <button id="year-{{index}}" class="year-buttons buttons" (click)="filterData('year', {value: button}, $event)">
+          {{button | titlecase}}
+        </button>
+      </div>
+    </div>
+
+
+    <header>
+      <span class="title">
+        Successfull Launch
+      </span>
+      <hr class="bar">
+    </header>
+
+
+    <div class="launch-success grid-inside-filter">
+      <div *ngFor="let button of buttons.launch; let index = index;">
+        <button id="launch-{{index}}" class="launch-buttons buttons"
+          (click)="filterData('launch', {value: button}, $event)">
+          {{button | titlecase}}
+        </button>
+      </div>
+    </div>
+
+
+    <header>
+      <span class="title">
+        Successfull Landing
+      </span>
+      <hr class="bar">
+    </header>
+
+
+    <div class="launch-landing grid-inside-filter">
+      <div *ngFor="let button of buttons.landing; let index = index">
+        <button id="land-{{index}}" class="land-buttons buttons" (click)="filterData('land', {value: button}, $event)">
           {{button}}
         </button>
-      </li>
-    </ul>
-
-    <h3>Launch</h3>
-    <ul class="launch-success">
-      <li *ngFor="let button of buttons.launch; let index = index;">
-        <button  id="launch-{{index}}" class="launch-buttons"   (click)="filterData('launch', {value: button}, $event)">
-          {{button}}
-        </button>
-      </li>
-    </ul>
-
-    <h3>Landing</h3>
-    <ul class="launch-landing">
-      <li *ngFor="let button of buttons.landing; let index = index">
-        <button  id="land-{{index}}" class="land-buttons"  (click)="filterData('land', {value: button}, $event)">
-          {{button}}
-        </button>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 
-
-  <div class="right-container program-data">
-    <ng-container *ngFor="let program of spacexPrograms">
+  <div class="spacex-programs grid-data">
+    <ng-container *ngFor="let program of spacexPrograms; let index = index;">
       <div class="card">
-        <h3>{{program.mission_name}}</h3>
-        <h3>Mission Ids:</h3>
-        <ul>
+        <div class="image">
+          <img [src]="program.links.mission_patch" height="100px" width="100px" alt="">
+        </div>
+        <h5 class="program-title">{{program.mission_name}} <i>#</i> {{index+1}}</h5>
+        <div class="misson-ids">
+          <span class="mission-ids">Mission Ids:</span>
           <ng-container *ngIf="program.mission_id.length > 0; else noMissionIds">
-            <li *ngFor="let id of program.mission_id">{{id}}</li>
+            <li class="mission-id mission-id" *ngFor="let id of program.mission_id" >{{id}}</li>
           </ng-container>
           <ng-template #noMissionIds>
-            <span>No missions ids</span>
+            <span class="program-value"> NA</span>
           </ng-template>
-        </ul>
-        <strong>Launch Year: {{program.launch_year}} </strong>
-        <strong>Successfull Launch: {{program.launch_success}}</strong>
-        <strong>Successfull Landing: {{program.rocket.first_stage.cores[0].land_success}} </strong>
+        </div>
+
+        <div class="">
+          <span class="program-heading">
+            Launch Year:
+          </span>
+          <span class="program-value">
+            {{program.launch_year}}
+          </span>
+        </div>
+
+        <div class="">
+          <span class="program-heading">
+            Successfull Launch:
+          </span>
+          <span class="program-value">
+            {{program.launch_success}}
+          </span>
+        </div>
+
+        <div class="">
+          <span class="program-heading">
+            Successfull Landing:
+          </span>
+          <span class="program-value">
+            {{program.rocket.first_stage.cores[0].land_success || 'NA'}}
+          </span>
+        </div>
       </div>
     </ng-container>
   </div>
-</div>
+
+</section>

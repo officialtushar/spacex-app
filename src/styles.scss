@@ -1,1 +1,172 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* variables */
+:root {
+  --primary: #4d527c;
+  --secondary: #f2f2f2;
+  --button-color: #c9dca4;
+  --light-color: #c9dca4;
+  --text-color: #797D88;
+  --button-background-color: #4f7c17;
+  --heading: #0D1229;
+}
+
+/* base styles */
+body {
+  font-family: "Rubik Regular";
+  background: var(--secondary);
+}
+
+header {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* reset */
+li {
+  list-style-type: none;
+}
+
+li.mission-id {
+  list-style-type: circle;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+.program-heading {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+
+
+
+.program-value {
+  font-weight: bold;
+  font-size: 13px;
+  color: var(--text-color);
+}
+
+body,
+p,
+a,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+
+  font-weight: bold;
+}
+
+.mission-id {
+  color: var(--text-color);
+}
+
+
+.buttons {
+  border: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: var(--button-color);
+  color: #000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h1,
+h3 {
+  font-size: 1.2em;
+}
+
+h5 {
+  color: #4f5383;
+}
+
+.container {
+  display: flex;
+}
+
+.card {
+  padding: 10px;
+  border: 1px solid red;
+  margin-bottom: 10px;
+}
+
+.image {
+  text-align: center;
+  background-color: var(--secondary);
+  margin: 5px;
+  /* padding: 30px; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+// mobile
+
+/* fonts */
+@font-face {
+  font-family: "Rubik Regular";
+  src: url("./assets/fonts/Rubik/static/Rubik-Regular.ttf");
+}
+
+/* large tablets and laptops */
+
+@media screen and (min-width: 700px) {
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .grid-data {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .app-title {
+    grid-column: 1/3;
+  }
+
+
+}
+
+
+
+
+/* Desktop */
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 0.8em;
+  }
+  .app-title {
+    grid-column: 1/3;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .grid-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 175%;
+    grid-column-gap: 5px;
+  }
+}

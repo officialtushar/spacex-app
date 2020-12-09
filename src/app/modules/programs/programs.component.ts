@@ -42,32 +42,23 @@ export class ProgramsComponent implements OnInit {
 
 
   filterData(type, data, event) {
-
     console.log('event', event.target.id);
-
-
-
     this.filter[type] = data.value;
 
     console.log('fitler', this.filter);
 
     if(this.filter.launch !== null ) {
-      // this.launchSuccess();
       if(this.filter.land !== null) {
-
-
         if(this.filter.year !== null) {
           this.allFilter();
         } else {
           this.launchAndLand();
         }
-      } else {
+      }
+      else {
         this.launchSuccess();
       }
-
-
     }
-
   }
 
   launchSuccess() {
@@ -78,6 +69,7 @@ export class ProgramsComponent implements OnInit {
       console.log('% error while getting the data of all programs', 'color: yellow', error);
     });
   }
+
   launchAndLand() {
     this.dataService.launchAndLand(this.filter.launch, this.filter.land).subscribe((response) => {
       console.log('% response while getting the data of all programs', 'color: yellow', response);
