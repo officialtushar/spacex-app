@@ -21,5 +21,8 @@ Front-end application which would help users list and browse all launches by Spa
 # Technical Stack
 1. frontend - Angular
 2. Css3
+3. Html5
 
-3.
+
+
+
